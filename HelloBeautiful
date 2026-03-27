@@ -1,0 +1,19 @@
+local function loadPart(url, name)
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(url))()
+    end)
+    if success then
+        print("[NLT] " .. name .. " caricata con successo.")
+    else
+        warn("[NLT] Errore nel caricamento di " .. name .. ": " .. err)
+    end
+end
+
+-- Parte 1: GUI e Lighting
+loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte1.lua", "Interfaccia")
+
+-- Parte 2: Core Logica (Anti-Trap e Velocità)
+loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte2.lua", "Logica Core")
+
+-- Parte 3: Comandi Chat
+loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte3.lua", "Comandi Chat")
