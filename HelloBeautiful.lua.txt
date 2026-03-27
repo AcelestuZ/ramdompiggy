@@ -1,19 +1,20 @@
 local function loadPart(url, name)
-    local success, err = pcall(function()
-        loadstring(game:HttpGet(url))()
+    local success, result = pcall(function()
+        return game:HttpGet(url)
     end)
-    if success then
-        print("[NLT] " .. name .. " caricata con successo.")
+    if success and result then
+        local func, err = loadstring(result)
+        if func then
+            func()
+            print("[NLT] " .. name .. " loaded ")
+        else
+            warn("[NLT] Error in " .. name .. ": " .. tostring(err))
+        end
     else
-        warn("[NLT] Errore nel caricamento di " .. name .. ": " .. err)
+        warn("[NLT] Not valid Link " .. name)
     end
 end
 
--- Parte 1: GUI e Lighting
-loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte1.lua", "Interfaccia")
-
--- Parte 2: Core Logica (Anti-Trap e Velocità)
-loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte2.lua", "Logica Core")
-
--- Parte 3: Comandi Chat
-loadPart("https://raw.githubusercontent.com/TuoUser/TuoRepo/main/Parte3.lua", "Comandi Chat")
+loadPart("https://raw.githubusercontent.com/AcelestuZ/ramdompiggy/main/Part1.lua.txt", "Part1")
+loadPart("https://raw.githubusercontent.com/AcelestuZ/ramdompiggy/main/Part2.lua.txt", "Part2")
+loadPart("https://raw.githubusercontent.com/AcelestuZ/ramdompiggy/main/Part3.lua.txt", "Part3")
